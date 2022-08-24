@@ -115,8 +115,10 @@ class _BmiMainPageState extends State<BmiMainPage> {
                     _countBmi();
                     _whichlevel();
                     _saveToList();
-                    debugPrint(_heightController.text);
-                    debugPrint("${_weightController.text} weigt");
+                    _ageController.text = "";
+                    _heightController.text = "";
+                    _weightController.text = "";
+                    _nameController.text = "";
                   },
                   icon: Icon(Icons.arrow_forward_ios_sharp),
                   color: Constants.mainColor,
