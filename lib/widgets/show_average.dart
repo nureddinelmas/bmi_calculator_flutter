@@ -16,7 +16,7 @@ class ShowAverage extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
-          "Värdet -> ",
+          "BMI Index ",
           style: Constants.averageStyle,
         ),
         Text(

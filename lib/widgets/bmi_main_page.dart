@@ -60,10 +60,10 @@ class _BmiMainPageState extends State<BmiMainPage> {
                   itemBuilder: ((context, index) {
                     int reverseIndex = records.length - 1 - index;
                     return Card(
-                        color: Colors.amber,
+                        color: Constants.mainColor.shade100,
                         child: ListTile(
                           title: Text(
-                            "Name : ${records[reverseIndex].name.toString().toUpperCase()}     Age : ${records[reverseIndex].age.toString()}      ${records[reverseIndex].hmiLevel!.toUpperCase()}",
+                            "Name : ${records[reverseIndex].name.toString().toUpperCase()}  Age : ${records[reverseIndex].age.toString()}      ${records[reverseIndex].hmiLevel!.toUpperCase()}",
                           ),
                           subtitle: Text(
                               "Kilo : ${records[reverseIndex].kg.toString()}, Height : ${records[reverseIndex].cm.toString()}  HMI Index : ${records[reverseIndex].hmiIndex}"),
@@ -85,12 +85,14 @@ class _BmiMainPageState extends State<BmiMainPage> {
               Container(
                 margin: EdgeInsets.only(left: 5.0),
                 width: 140,
-                child: _buildTextField("Name", _nameController),
+                child: _buildTextField(
+                    "Name", _nameController, TextInputType.name),
               ),
               Expanded(
                 child: Container(
                   margin: EdgeInsets.all(0.0),
-                  child: _buildTextField("Age", _ageController),
+                  child: _buildTextField(
+                      "Age", _ageController, TextInputType.number),
                 ),
               ),
             ],
@@ -101,10 +103,12 @@ class _BmiMainPageState extends State<BmiMainPage> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Expanded(
-                  child: _buildTextField("kg", _weightController),
+                  child: _buildTextField(
+                      "kg", _weightController, TextInputType.number),
                 ),
                 Expanded(
-                  child: _buildTextField("cm", _heightController),
+                  child: _buildTextField(
+                      "cm", _heightController, TextInputType.number),
                 ),
                 IconButton(
                   onPressed: () {
@@ -127,11 +131,12 @@ class _BmiMainPageState extends State<BmiMainPage> {
     );
   }
 
-  Widget _buildTextField(
-      String text, TextEditingController textEditingController) {
+  Widget _buildTextField(String text,
+      TextEditingController textEditingController, TextInputType keyboard) {
     return Container(
       margin: EdgeInsets.all(5),
       child: TextField(
+        keyboardType: keyboard,
         controller: textEditingController,
         decoration: InputDecoration(
           prefixIconConstraints: BoxConstraints(maxHeight: 20, minWidth: 25),
